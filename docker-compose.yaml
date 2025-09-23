@@ -1,0 +1,10 @@
+services:
+  postgres:
+    container_name: flags
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: flags_test
+      POSTGRES_USER: flags_user
+      POSTGRES_DB: flags
+    ports:
+      - 5432:5432
