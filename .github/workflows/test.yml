@@ -9,6 +9,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: flags_test
+          POSTGRES_USER: flags_user
+          POSTGRES_DB: flags
+
     steps:
       - uses: actions/checkout@v5
       - uses: erlef/setup-beam@v1
