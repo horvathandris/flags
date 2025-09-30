@@ -1,5 +1,5 @@
 --- migration:up
-CREATE OR REPLACE FUNCTION update_modified_column()
+CREATE OR REPLACE FUNCTION update_modified_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
     NEW.updated_at = current_timestamp(3);
@@ -8,6 +8,6 @@ END;
 $$ language 'plpgsql';
 
 --- migration:down
-DROP FUNCTION IF EXISTS update_modified_column();
+DROP FUNCTION IF EXISTS update_modified_at_column();
 
 --- migration:end
