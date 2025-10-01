@@ -1,7 +1,7 @@
 import gleeunit/should
 import util/hashing
 
-pub fn normalize_to_percentage_test() {
+pub fn normalize_to_percentage__test() {
   hashing.normalize_to_percentage("123", "gr1")
   |> should.equal(9)
 
@@ -9,7 +9,7 @@ pub fn normalize_to_percentage_test() {
   |> should.equal(22)
 }
 
-pub fn normalize_to_variant_test() {
+pub fn normalize_to_variant__test() {
   hashing.normalize_to_variant("123", "gr1", 3)
   |> should.equal(3)
 

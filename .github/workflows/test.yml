@@ -10,15 +10,22 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: flags_user
+      POSTGRES_PASSWORD: flags_test
+      POSTGRES_DB: flags
+
     services:
       postgres:
         image: postgres:18
+        env:
+          POSTGRES_USER: flags_user
+          POSTGRES_PASSWORD: flags_test
+          POSTGRES_DB: flags
         ports:
           - 5432:5432
-        env:
-          POSTGRES_PASSWORD: flags_test
-          POSTGRES_USER: flags_user
-          POSTGRES_DB: flags
 
     steps:
       - uses: actions/checkout@v5
