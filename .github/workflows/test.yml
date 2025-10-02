@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      POSTGRES_HOST: localhost
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: flags_user
-      POSTGRES_PASSWORD: flags_test
-      POSTGRES_DB: flags
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: flags_user
+      PGPASSWORD: flags_test
+      PGDATABASE: flags
 
     services:
       postgres:
