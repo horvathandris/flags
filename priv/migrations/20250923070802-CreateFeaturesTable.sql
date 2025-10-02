@@ -1,10 +1,10 @@
 --- migration:up
 CREATE TABLE IF NOT EXISTS features (
-  id          VARCHAR(26) NOT NULL PRIMARY KEY,
-  name        TEXT        NOT NULL UNIQUE,
-  description TEXT        NOT NULL,
-  created_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP
+  id          TEXT      NOT NULL PRIMARY KEY,
+  name        TEXT      NOT NULL UNIQUE,
+  description TEXT      NOT NULL,
+  created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TRIGGER update_feature_modtime
