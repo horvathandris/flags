@@ -1,6 +1,8 @@
 import gleam/result
 import gleam/time/timestamp.{type Timestamp}
-import sql.{type CreateFeatureRow, type FindFeatureByIdRow}
+import sql.{
+  type CreateFeatureRow, type FindFeatureByIdRow, type FindFeatureByNameRow,
+}
 import typeid.{type TypeId}
 
 const feature_typeid_prefix = "feature"
@@ -36,6 +38,20 @@ pub fn from_create_feature_row(
 
 pub fn from_find_feature_by_id_row(
   row row: FindFeatureByIdRow,
+) -> Result(Feature, String) {
+  use id <- result.map(typeid.parse(feature_typeid_prefix <> "_" <> row.id))
+
+  Feature(
+    id: id,
+    name: row.name,
+    description: row.description,
+    created_at: row.created_at,
+    updated_at: row.updated_at,
+  )
+}
+
+pub fn from_find_feature_by_name_row(
+  row row: FindFeatureByNameRow,
 ) -> Result(Feature, String) {
   use id <- result.map(typeid.parse(feature_typeid_prefix <> "_" <> row.id))
 
