@@ -3,8 +3,9 @@ import gleeunit/should
 import service/feature_service
 
 pub fn create_feature__test() {
+  use ctx <- db_test_helper.with_db()
+
   // given
-  let ctx = db_test_helper.setup()
   let expected_name = "test_feature"
   let expected_description = "Test feature description"
 
@@ -25,8 +26,9 @@ pub fn create_feature__test() {
 }
 
 pub fn find_feature_by_id__test() {
+  use ctx <- db_test_helper.with_db()
+
   // given
-  let ctx = db_test_helper.setup()
   let expected_name = "test_feature"
   let expected_description = "Test feature description"
   let assert Ok(feature) =

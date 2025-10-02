@@ -5,6 +5,12 @@ import infra/db
 import pog
 
 // TODO: i wonder if there's a way to reuse the connection for multiple tests
+pub fn with_db(test_fn: fn(context.Context) -> Nil) {
+  let context = setup()
+  test_fn(context)
+  teardown(context)
+}
+
 pub fn setup() -> context.Context {
   dot_env.load_default()
 
@@ -17,9 +23,11 @@ pub fn setup() -> context.Context {
 
   let assert Ok(_) = db.migrate()
 
-  let assert Ok(_) = truncate_table(conn, "features")
-
   context.Context(db: conn)
+}
+
+pub fn teardown(context: context.Context) {
+  let assert Ok(_) = truncate_table(context.db, "features")
 }
 
 fn truncate_table(
