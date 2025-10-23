@@ -16,12 +16,12 @@ pub fn setup() -> context.Context {
 
   let #(spec, conn) = db.init()
 
+  let assert Ok(_) = db.migrate()
+
   let assert Ok(_actor) =
     static_supervisor.new(static_supervisor.OneForOne)
     |> static_supervisor.add(spec)
     |> static_supervisor.start
-
-  let assert Ok(_) = db.migrate()
 
   context.Context(db: conn)
 }
