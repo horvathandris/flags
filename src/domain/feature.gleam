@@ -5,7 +5,7 @@ import sql.{
 }
 import typeid.{type TypeId}
 
-const feature_typeid_prefix = "feature"
+const feature_typeid_prefix = "f"
 
 pub type Feature {
   Feature(
