@@ -25,11 +25,5 @@ gleam run   # Run the project
 gleam test  # Run the tests
 ```
 
-
 ## TODO
-- use birdie and common test for integration tests
-
-
-Other random library ideas:
-- simplejson test assertion library
-- http wisp response snapshot converter
+- use common test for integration tests
